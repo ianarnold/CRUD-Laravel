@@ -44,7 +44,7 @@
                                                 <div class="mb-6">
                                                     <label for="cpf" class="text-sm text-gray-600 dark:text-gray-400">CPF</label>
                                                     <input
-                                                        type="text"
+                                                        type="number"
                                                         name="cpf"
                                                         id="cpf"
                                                         placeholder="Digite o CPF"

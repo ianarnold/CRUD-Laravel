@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterPeopleRequest;
 use Illuminate\Http\Request;
 use App\Models\People;
 use Illuminate\Support\Facades\DB;
+
 
 class PeoplesController extends Controller
 {
@@ -14,31 +16,12 @@ class PeoplesController extends Controller
         return view('registerpeople');
     }
 
-    public function registerPeople(Request $request) 
-    {
-        $request->validate([
-            'name' => 'required',
-            'cpf' => 'required|cpf|unique:peoples',
-            'email' => 'required|unique:peoples',
-            'address' => 'required',
-            'age' => 'required|numeric'
-        ],
-        [
-            'name.required' => 'O campo NOME é obrigatório.',
-            'cpf.required' => 'O campo CPF é obrigatório.',
-            'cpf.cpf' => 'CPF incorreto, escreva novamente.',
-            'cpf.unique' => 'CPF já cadastrado, escreva novamente.',
-            'email.required' => 'O campo EMAIL é obrigatório.',
-            'email.unique' => 'EMAIL já cadastrado, escreva novamente.',
-            'address.required' => 'O campo ENDEREÇO é obrigatório.',  
-            'age.required' => 'O campo IDADE é obrigatório.',
-            'age.numeric' => 'O campo IDADE deve ser um número.'
-        ]);
-        
+    public function registerPeople(RegisterPeopleRequest $request) 
+    { 
         People::create($request->all());
         $peoples = DB::select('select * from peoples');   
 
-        return view('listPeoples', ['peoples'=>$peoples]);
+        return redirect()->route('listPeopleView');
     }
 
     public function listPeopleView() 

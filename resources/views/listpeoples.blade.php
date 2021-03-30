@@ -26,7 +26,7 @@
                             <td class="border px-4 py-2">{{ $people->id }}</td>
                             <td class="border px-4 py-2">{{ $people->name }}</td>
                             <td class="border px-4 py-2">{{ $people->cpf }}</td>
-                            <td class="border px-4 py-2">{{ $people->email }}/td>
+                            <td class="border px-4 py-2">{{ $people->email }}</td>
                             <td class="border px-4 py-2">{{ $people->address }}</td>
                             <td class="border px-4 py-2">{{ $people->age }}</td>
                           </tr>

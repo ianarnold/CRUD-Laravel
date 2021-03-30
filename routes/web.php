@@ -42,6 +42,9 @@ Route::get('/registerproduct', [ProductsController::class, 'registerProductView'
 Route::get('/listproduct', [ProductsController::class, 'listProductView']
 )->name('listProductView')->middleware(['auth']);
 
+Route::post('/registerproduct', [ProductsController::class, 'registerProduct']
+)->name('registerProduct')->middleware(['auth']);
+
 
 
 //AUTH

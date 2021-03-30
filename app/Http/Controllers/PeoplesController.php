@@ -32,7 +32,7 @@ class PeoplesController extends Controller
             'email.unique' => 'EMAIL já cadastrado, escreva novamente.',
             'address.required' => 'O campo ENDEREÇO é obrigatório.',  
             'age.required' => 'O campo IDADE é obrigatório.',
-            'age.numberic' => 'O campo IDADE deve ser um número.'
+            'age.numeric' => 'O campo IDADE deve ser um número.'
         ]);
         
         People::create($request->all());

@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
+    public function __construct()
+    {
+        $this->product = new Product();
+    }
     
     public function registerProductView()
     {
@@ -28,6 +32,31 @@ class ProductsController extends Controller
         $products = DB::select('select * from products');   
 
         return redirect()->route('listProductView');
+    }
+
+    public function editProductView($id)
+    { 
+        $product = Product::findOrFail($id);
+        return view('editProduct', ['product' => $product]);
+    }
+
+    public function editProduct(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        $product->update([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'value' => $request->input('value'),
+            'quantity' => $request->input('quantity'),
+            'bar_code' => $request->input('bar_code')
+        ]);
+
+        return redirect()->route('listProductView');
+    }
+
+    protected function getProduct($id)
+    {
+        return $this->product->find($id);
     }
 
 }

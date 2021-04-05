@@ -47,5 +47,12 @@ Route::post('/registerproduct', [ProductsController::class, 'registerProduct']
 
 
 
+Route::get('/editproduct/{id}', [ProductsController::class, 'editProductView']
+)->name('editProductView')->middleware(['auth']);
+
+Route::post('/editproduct/{id}', [ProductsController::class, 'editProduct']
+)->name('editProduct')->middleware(['auth']);
+
+
 //AUTH
 require __DIR__.'/auth.php';

@@ -35,6 +35,13 @@ Route::get('/listpeople', [PeoplesController::class, 'listPeopleView']
 )->name('listPeopleView')->middleware(['auth']);
 
 
+Route::get('/editpeople/{id}', [PeoplesController::class, 'editPeopleView']
+)->name('editPeopleView')->middleware(['auth']);
+
+Route::post('/editpeople/{id}', [PeoplesController::class, 'editPeople']
+)->name('editPeople')->middleware(['auth']);
+
+
 //Rotas para produtos
 Route::get('/registerproduct', [ProductsController::class, 'registerProductView']
 )->name('registerProductView')->middleware(['auth']);

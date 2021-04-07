@@ -30,4 +30,29 @@ class PeoplesController extends Controller
         return view('listPeoples', ['peoples'=>$peoples]);
     }
 
+    public function editPeopleView($id)
+    { 
+        $people = People::findOrFail($id);
+        return view('editpeople', ['people' => $people]);
+    }
+
+    public function editPeople(RegisterPeopleRequest $request, $id)
+    {
+        $people = People::findOrFail($id);
+        $people->update([
+            'name' => $request->input('name'),
+            'cpf' => $request->input('cpf'),
+            'email' => $request->input('email'),
+            'address' => $request->input('address'),
+            'age' => $request->input('age')
+        ]);
+
+        return redirect()->route('listPeopleView');
+    }
+
+    protected function getPeople($id)
+    {
+        return $this->people->find($id);
+    }
+
 }

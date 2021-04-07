@@ -18,6 +18,7 @@
                             <th class="w-1/2 px-4 py-2">EMAIL</th>
                             <th class="w-1/2 px-4 py-2">ENDEREÇO</th>
                             <th class="w-1/4 px-4 py-2">IDADE</th>
+                            <th class="w-1/4 px-4 py-2">EDITAR</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -29,6 +30,7 @@
                             <td class="border px-4 py-2">{{ $people->email }}</td>
                             <td class="border px-4 py-2">{{ $people->address }}</td>
                             <td class="border px-4 py-2">{{ $people->age }}</td>
+                            <td class="border px-2 py-2"><a href="{{ route('editPeopleView', ['id' => $people->id]) }}">Editar</a></td>
                           </tr>
                           @endforeach
                         </tbody>

@@ -40,7 +40,7 @@ class ProductsController extends Controller
         return view('editProduct', ['product' => $product]);
     }
 
-    public function editProduct(Request $request, $id)
+    public function editProduct(RegisterProductRequest $request, $id)
     {
         $product = Product::findOrFail($id);
         $product->update([

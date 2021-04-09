@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeoplesController;
 use App\Http\Controllers\ProductsController;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,12 +35,14 @@ Route::post('/registerpeople', [PeoplesController::class, 'registerPeople']
 Route::get('/listpeople', [PeoplesController::class, 'listPeopleView']
 )->name('listPeopleView')->middleware(['auth']);
 
-
 Route::get('/editpeople/{id}', [PeoplesController::class, 'editPeopleView']
 )->name('editPeopleView')->middleware(['auth']);
 
 Route::post('/editpeople/{id}', [PeoplesController::class, 'editPeople']
 )->name('editPeople')->middleware(['auth']);
+
+Route::get('/deletepeople/{id}', [PeoplesController::class, 'deletePeople']
+)->name('deletePeople')->middleware(['auth']);
 
 
 //Rotas para produtos
@@ -52,13 +55,14 @@ Route::get('/listproduct', [ProductsController::class, 'listProductView']
 Route::post('/registerproduct', [ProductsController::class, 'registerProduct']
 )->name('registerProduct')->middleware(['auth']);
 
-
-
 Route::get('/editproduct/{id}', [ProductsController::class, 'editProductView']
 )->name('editProductView')->middleware(['auth']);
 
 Route::post('/editproduct/{id}', [ProductsController::class, 'editProduct']
 )->name('editProduct')->middleware(['auth']);
+
+Route::get('/deleteproduct/{id}', [ProductsController::class, 'deleteProduct']
+)->name('deleteProduct')->middleware(['auth']);
 
 
 //AUTH

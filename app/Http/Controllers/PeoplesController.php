@@ -50,6 +50,14 @@ class PeoplesController extends Controller
         return redirect()->route('listPeopleView');
     }
 
+    public function deletePeople($id)
+    {
+        $people = People::findOrFail($id);
+        $people->delete();
+
+        return redirect()->route('listPeopleView');
+    }
+
     protected function getPeople($id)
     {
         return $this->people->find($id);

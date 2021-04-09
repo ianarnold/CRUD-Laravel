@@ -19,6 +19,7 @@
                             <th class="w-1/2 px-4 py-2">ENDEREÇO</th>
                             <th class="w-1/4 px-4 py-2">IDADE</th>
                             <th class="w-1/4 px-4 py-2">EDITAR</th>
+                            <th class="w-1/4 px-4 py-2">APAGAR</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -31,6 +32,7 @@
                             <td class="border px-4 py-2">{{ $people->address }}</td>
                             <td class="border px-4 py-2">{{ $people->age }}</td>
                             <td class="border px-2 py-2"><a href="{{ route('editPeopleView', ['id' => $people->id]) }}">Editar</a></td>
+                            <td class="border px-2 py-2"><a href="{{ route('deletePeople', ['id' => $people->id]) }}">Apagar</a></td>
                           </tr>
                           @endforeach
                         </tbody>

@@ -53,14 +53,16 @@
                                             </div>
                                             <br>
                                             @endif
-                                            <form action="{{ route('editPeople',  ['id' => $people->id]) }}" method="POST" id="form">
+                                            <form action="{{ route('editPeople',  ['people' => $people->id]) }}" method="POST" id="form">
                                                 @csrf
+                                                @method('PUT')
                                                 <div class="mb-6">
                                                     <label for="name" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Nome completo</label>
                                                     <input
                                                         type="text"
                                                         name="name"
                                                         id="name"
+                                                        value="{{$people->name}}"
                                                         placeholder="Digite o novo nome"
                                                         required="required"
                                                         class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"/>
@@ -72,7 +74,8 @@
                                                         name="cpf"
                                                         id="cpf"
                                                         placeholder="Digite o novo CPF"
-                                                        required="required"
+                                                        value="{{$people->cpf}}"
+                                                        disabled=""
                                                         class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"/>
                                                 </div>
                                                 <div class="mb-6">
@@ -83,6 +86,7 @@
                                                         id="email"
                                                         placeholder="Digite o novo email"
                                                         required="required"
+                                                        value="{{$people->email}}"
                                                         class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"/>
                                                 </div>
                                                 <div class="mb-6">
@@ -95,6 +99,7 @@
                                                         id="address"
                                                         placeholder="Digite o novo endereço"
                                                         required="required"
+                                                        value="{{$people->address}}"
                                                         class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"/>
                                                 </div>
                                                 <div class="mb-6">
@@ -105,6 +110,7 @@
                                                         id="age"
                                                         placeholder="Digite a nova idade"
                                                         required="required"
+                                                        value="{{$people->age}}"
                                                         class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"/>
                                                 </div>
                                                 <div class="mb-6">

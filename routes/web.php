@@ -24,8 +24,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
-//Rotas pra pessoas 
-Route::get('/registerpeople', 
+//Rotas pra pessoas
+Route::get('/registerpeople',
     [PeoplesController::class, 'registerPeopleView']
 )->name('registerPeopleView')->middleware(['auth']);
 
@@ -35,10 +35,10 @@ Route::post('/registerpeople', [PeoplesController::class, 'registerPeople']
 Route::get('/listpeople', [PeoplesController::class, 'listPeopleView']
 )->name('listPeopleView')->middleware(['auth']);
 
-Route::get('/editpeople/{id}', [PeoplesController::class, 'editPeopleView']
+Route::get('/editpeople/{people}', [PeoplesController::class, 'editPeopleView']
 )->name('editPeopleView')->middleware(['auth']);
 
-Route::post('/editpeople/{id}', [PeoplesController::class, 'editPeople']
+Route::put('/editpeople/{people}', [PeoplesController::class, 'editPeople']
 )->name('editPeople')->middleware(['auth']);
 
 Route::get('/deletepeople/{id}', [PeoplesController::class, 'deletePeople']
@@ -58,7 +58,7 @@ Route::post('/registerproduct', [ProductsController::class, 'registerProduct']
 Route::get('/editproduct/{id}', [ProductsController::class, 'editProductView']
 )->name('editProductView')->middleware(['auth']);
 
-Route::post('/editproduct/{id}', [ProductsController::class, 'editProduct']
+Route::put('/editproduct/{id}', [ProductsController::class, 'editProduct']
 )->name('editProduct')->middleware(['auth']);
 
 Route::get('/deleteproduct/{id}', [ProductsController::class, 'deleteProduct']
@@ -66,4 +66,4 @@ Route::get('/deleteproduct/{id}', [ProductsController::class, 'deleteProduct']
 
 
 //AUTH
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -23,7 +23,7 @@ class PeopleFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'cpf' => $this->faker->numberBetween(1,999999),
+            'cpf' => $this->faker->numberBetween(1,99999999999),
             'email' => $this->faker->email,
             'address' => $this->faker->address,
             'age' => $this->faker->numberBetween(1,99)

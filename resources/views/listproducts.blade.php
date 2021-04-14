@@ -31,7 +31,7 @@
                             <td class="border px-4 py-2">{{ $product->value }}</td>
                             <td class="border px-4 py-2">{{ $product->quantity }}</td>
                             <td class="border px-4 py-2">{{ $product->bar_code }}</td>
-                            <td class="border px-2 py-2"><a href="{{ route('editProductView', ['id' => $product->id]) }}">Editar</a></td>
+                            <td class="border px-2 py-2"><a href="{{ route('editProductView', ['product' => $product->id]) }}">Editar</a></td>
                             <td class="border px-2 py-2"><a href="{{ route('deleteProduct', ['id' => $product->id]) }}">Apagar</a></td>
                           </tr>
                           @endforeach

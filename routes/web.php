@@ -55,10 +55,10 @@ Route::get('/listproduct', [ProductsController::class, 'listProductView']
 Route::post('/registerproduct', [ProductsController::class, 'registerProduct']
 )->name('registerProduct')->middleware(['auth']);
 
-Route::get('/editproduct/{id}', [ProductsController::class, 'editProductView']
+Route::get('/editproduct/{product}', [ProductsController::class, 'editProductView']
 )->name('editProductView')->middleware(['auth']);
 
-Route::put('/editproduct/{id}', [ProductsController::class, 'editProduct']
+Route::put('/editproduct/{product}', [ProductsController::class, 'editProduct']
 )->name('editProduct')->middleware(['auth']);
 
 Route::get('/deleteproduct/{id}', [ProductsController::class, 'deleteProduct']

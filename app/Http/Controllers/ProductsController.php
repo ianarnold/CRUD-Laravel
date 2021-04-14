@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,35 +23,26 @@ class ProductsController extends Controller
     }
     public function listProductView()
     {
-        $products = DB::select('select * from products');   
-        return view('listProducts', ['products'=>$products]);
+        $products = Product::paginate(15);
+        return view('listproducts', ['products'=>$products]);
     }
 
     public function registerProduct(RegisterProductRequest $request)
     {
-        Product::create($request->all());
-        $products = DB::select('select * from products');   
-
+        $data = $request->only(['name', 'description', 'value', 'quantity', 'bar_code']);
+        Product::create($data);  
         return redirect()->route('listProductView');
     }
 
-    public function editProductView($id)
+    public function editProductView(Product $product)
     { 
-        $product = Product::findOrFail($id);
-        return view('editProduct', ['product' => $product]);
+        return view('editproduct', ['product' => $product]);
     }
 
-    public function editProduct(RegisterProductRequest $request, $id)
+    public function editProduct(UpdateProductRequest $request, Product $product)
     {
-        $product = Product::findOrFail($id);
-        $product->update([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'value' => $request->input('value'),
-            'quantity' => $request->input('quantity'),
-            'bar_code' => $request->input('bar_code')
-        ]);
-
+        $data = $request->only(['name', 'description', 'value', 'quantity', 'bar_code']);
+        $product->update($data);
         return redirect()->route('listProductView');
     }
 
